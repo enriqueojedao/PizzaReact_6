@@ -27,3 +27,6 @@
   text-transform: capitalize; 
   margin-bottom: 4px;         
 }
+.pdesc {
+  text-align: justify;
+}

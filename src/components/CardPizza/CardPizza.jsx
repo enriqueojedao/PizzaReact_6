@@ -1,16 +1,17 @@
 import React from 'react';
 import './CardPizza.css';
 
-const CardPizza = ({ name, price, ingredients, img }) => (
+const CardPizza = ({ name, price, ingredients, img, descrip, idpizza}) => (
   <div className="card card-pizza">
     <img src={img} alt={name} className="card-img-top" />
     <div className="card-body d-flex flex-column justify-content-between">
-      <h2 className="card-title mb-3">Pizza {name}</h2>
+      <h2 className="card-title mb-2">Pizza {name}.</h2>
+      <p className="mb-2 pdesc">{descrip}</p>
       <div>
         <p className="mb-0">🍕 Ingredientes:</p>
         <ul className="ingredients-list">
-          {ingredients.map((ingredient, index) => (
-            <li key={index}>{ingredient}.</li>
+          {ingredients.map((ingredient) => (
+            <li key={`${ingredient}-${idpizza}`}>{ingredient}.</li>
           ))}
         </ul>
       </div>
