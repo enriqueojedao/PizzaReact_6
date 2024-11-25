@@ -30,11 +30,7 @@ const Home = () => {
                 key={pizza.id}
                 className="col-12 col-md-6 col-lg-4 d-flex justify-content-center mb-4">
                 <CardPizza
-                  name={pizza.name}
-                  price={pizza.price}
-                  ingredients={pizza.ingredients}
-                  img={pizza.img}
-                  idpizza={pizza.id}
+                  {...pizza}
                 />
               </div>
             ))

@@ -23,12 +23,8 @@ const Pizza = () => {
   return (
     <div className="container mt-4 d-flex justify-content-center">
       <CardPizza
-        name={pizza.name}
-        price={pizza.price}
-        ingredients={pizza.ingredients}
-        img={pizza.img}
+        {...pizza}
         descrip={pizza.desc}
-        idpizza={pizza.id}
       />
     </div>
   );
