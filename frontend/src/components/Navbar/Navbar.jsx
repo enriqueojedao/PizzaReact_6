@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -9,7 +10,7 @@ const Navbar = () => {
       <div className="container-fluid">
         <span className="navbar-title d-none d-lg-block">Pizzería Mamma Mía!</span>
         <button
-          className="navbar-toggler"
+          className="navbar-toggler mb-2 mt-2"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
@@ -22,34 +23,35 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <button className="btn btn-link nav-link">🍕Home</button>
+              <Link to="/" className="btn btn-link nav-link">🍕 Home</Link>
             </li>
             {token ? (
               <>
                 <li className="nav-item">
-                  <button className="btn btn-link nav-link">🔓Profile</button>
+                  <Link to="/profile"  className="btn btn-link nav-link">🔓 Profile</Link>
                 </li>
                 <li className="nav-item">
-                  <button className="btn btn-link nav-link">🔒Logout</button>
+                  <button className="btn btn-link nav-link">🔒 Logout</button>
                 </li>
               </>
             ) : (
               <>
                 <li className="nav-item">
-                  <button className="btn btn-link nav-link">🔐Login</button>
+                  <Link to="/login" className="nav-link">🔐 Login</Link>
                 </li>
                 <li className="nav-item">
-                  <button className="btn btn-link nav-link">🔏Register</button>
+                  <Link to="/register" className="nav-link">🔏 Register</Link>
                 </li>
               </>
             )}
           </ul>
         </div>
-        <button className="btn btn-link total-button nav-link ">
+        <Link to="/cart" className="total-button nav-link">
           🛒 Total: ${total.toLocaleString()}
-        </button>
+        </Link>
       </div>
     </nav>
   );
 };
+
 export default Navbar;

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { pizzaCart } from '../Home/pizzas';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Cart.css';
-import { increaseCount, decreaseCount, calculateTotal } from '../../tools/cartTools';
+import { increaseCount, decreaseCount, calculateTotal } from '../../components/Tools/cartTools';
 
 const Cart = () => {
     const [cart, setCart] = useState(pizzaCart);

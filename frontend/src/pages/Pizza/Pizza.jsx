@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import CardPizza from '../CardPizza/CardPizza';
+import CardPizza from '../../components/CardPizza/CardPizza';
 
 const Pizza = () => {
   const [pizza, setPizza] = useState(null);

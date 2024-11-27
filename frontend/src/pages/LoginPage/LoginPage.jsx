@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { validateCredentials } from '../../tools/loginRegisterTools';
+import { validateCredentials } from '../../components/Tools/loginRegisterTools';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
