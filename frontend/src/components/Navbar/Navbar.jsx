@@ -4,8 +4,8 @@ import { CartContext } from '../../context/CartContext';
 import './Navbar.css';
 
 const Navbar = () => {
-  const { total } = useContext(CartContext); // Obtener el total desde CartContext
-  const token = false; // Simula autenticación
+  const { total } = useContext(CartContext); // Así leo el total desde CartContext
+  const token = false; // Uso el token para simular la autenticación
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
