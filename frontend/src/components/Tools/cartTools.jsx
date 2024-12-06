@@ -1,20 +1,25 @@
-// Función para aumentar la cantidad de un producto.
-export const increaseCount = (cart, id) => {
-    return cart.map((pizza) =>
-        pizza.id === id ? { ...pizza, count: pizza.count + 1 } : pizza
-    );
+export const addOrUpdateProduct = (cart, product) => {
+    const itemIndex = cart.findIndex((item) => item.id === product.id);
+    if (itemIndex !== -1) {
+        return cart.map((item) =>
+            item.id === product.id ? { ...item, count: item.count + 1 } : item
+        );
+    }
+    return [...cart, { ...product, count: 1 }];
 };
 
-// Función para disminuir la cantidad de un producto.
-export const decreaseCount = (cart, id) => {
+export const updateProductQuantity = (cart, productId, amount) => {
     return cart
-        .map((pizza) =>
-            pizza.id === id ? { ...pizza, count: pizza.count - 1 } : pizza
+        .map((item) =>
+            item.id === productId ? { ...item, count: item.count + amount } : item
         )
-        .filter((pizza) => pizza.count > 0);
+        .filter((item) => item.count > 0);
 };
 
-// Función para calcular el total del carrito.
+export const removeProduct = (cart, productId) => {
+    return cart.filter((item) => item.id !== productId);
+};
+
 export const calculateTotal = (cart) => {
-    return cart.reduce((sum, pizza) => sum + pizza.price * pizza.count, 0);
+    return cart.reduce((sum, item) => sum + item.price * item.count, 0);
 };

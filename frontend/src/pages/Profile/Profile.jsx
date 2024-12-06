@@ -4,7 +4,7 @@ import profilePhoto from '../../assets/images/Perfil_example.jpg';
 
 const Profile = () => {
   return (
-    <div className="d-flex flex-column min-vh-100 align-items-center justify-content-center">
+    <div className="d-flex flex-column align-items-center justify-content-center">
       <img
         src={profilePhoto}
         alt="Foto de usuario"

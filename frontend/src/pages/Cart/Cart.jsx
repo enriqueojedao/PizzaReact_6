@@ -1,25 +1,14 @@
-import React, { useState } from 'react';
-import { pizzaCart } from '../Home/pizzas';
+import { useContext } from 'react';
+import { CartContext } from '../../context/CartContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Cart.css';
-import { increaseCount, decreaseCount, calculateTotal } from '../../components/Tools/cartTools';
 
 const Cart = () => {
-    const [cart, setCart] = useState(pizzaCart);
-
-    const handleIncrease = (id) => {
-        setCart((prevCart) => increaseCount(prevCart, id));
-    };
-
-    const handleDecrease = (id) => {
-        setCart((prevCart) => decreaseCount(prevCart, id));
-    };
-
-    const total = calculateTotal(cart);
+    const { cart, updateQuantity, total, removeFromCart } = useContext(CartContext);
 
     return (
         <div className="container mt-3 mx-auto container-custom">
-            <h2 className="text-center mb-4">Detalles del Pedido</h2>
+            <h2 className="text-center mb-4">Detalles del Pedido:</h2>
             <div className="row justify-content-center">
                 {cart.map((pizza) => (
                     <div key={pizza.id} className="col-12 mb-4">
@@ -33,19 +22,27 @@ const Cart = () => {
                                 <h5 className="text-truncate pizza-name text-capitalize">{pizza.name}:</h5>
                             </div>
                             <div className="ms-3 d-flex d-flex-align">
-                                <span className="d-block d-block-price">${(pizza.price * pizza.count).toLocaleString()}</span>
+                                <span className="d-block d-block-price">
+                                    ${(pizza.price * pizza.count).toLocaleString()}
+                                </span>
                                 <button
                                     className="btn btn-danger btn-sm"
-                                    onClick={() => handleDecrease(pizza.id)}
+                                    onClick={() => updateQuantity(pizza.id, -1)}
                                 >
                                     -
                                 </button>
                                 <span className="mx-2">{pizza.count}</span>
                                 <button
                                     className="btn btn-success btn-sm"
-                                    onClick={() => handleIncrease(pizza.id)}
+                                    onClick={() => updateQuantity(pizza.id, 1)}
                                 >
                                     +
+                                </button>
+                                <button
+                                    className="btn btn-warning btn-sm ms-2"
+                                    onClick={() => removeFromCart(pizza.id)}
+                                >
+                                    🗑
                                 </button>
                             </div>
                         </div>

@@ -15,7 +15,7 @@ const RegisterPage = () => {
   };
 
   return (
-    <div className="d-flex min-vh-100 align-items-center justify-content-center">
+    <div className="d-flex mt-3 align-items-center justify-content-center">
       <div className="card p-3" style={{ width: '20rem' }}>
         <h2 className="text-center mb-4">Registro</h2>
         <form onSubmit={handleSubmit}>

@@ -14,7 +14,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="d-flex min-vh-100 align-items-center justify-content-center">
+    <div className="d-flex align-items-center justify-content-center h-100">
       <div className="card p-3" style={{ width: '20rem' }}>
         <h2 className="text-center mb-4">Iniciar Sesión</h2>
         <form onSubmit={handleSubmit}>

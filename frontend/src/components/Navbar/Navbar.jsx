@@ -1,10 +1,11 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { CartContext } from '../../context/CartContext';
 import './Navbar.css';
 
 const Navbar = () => {
-  const total = 25000;
-  const token = false;
-
+  const { total } = useContext(CartContext); // Obtener el total desde CartContext
+  const token = false; // Simula autenticación
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
@@ -23,15 +24,15 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <Link to="/" className="btn btn-link nav-link">🍕 Home</Link>
+              <Link to="/" className="nav-link">🍕 Home</Link>
             </li>
             {token ? (
               <>
                 <li className="nav-item">
-                  <Link to="/profile"  className="btn btn-link nav-link">🔓 Profile</Link>
+                  <Link to="/profile" className="nav-link">⚙️ Profile</Link>
                 </li>
                 <li className="nav-item">
-                  <button className="btn btn-link nav-link">🔒 Logout</button>
+                  <button className="nav-link">🔒 Logout</button>
                 </li>
               </>
             ) : (

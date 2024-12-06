@@ -1,46 +1,33 @@
-import React, { useState, useEffect } from 'react';
-import Header from '../Header/Header';
+import { useContext } from 'react';
+import { CartContext } from '../../context/CartContext';
 import CardPizza from '../../components/CardPizza/CardPizza';
+import { PizzaContext } from '../../context/PizzaContext';
 
 const Home = () => {
-  const [pizzas, setPizzas] = useState([]); 
+    const { pizzas } = useContext(PizzaContext);
+    const { addToCart } = useContext(CartContext);  // Obtener la función addToCart desde el CartContext
 
-  useEffect(() => {
-    const fetchPizzas = async () => {
-      try {
-        const response = await fetch('http://localhost:5000/api/pizzas');
-        const data = await response.json();
-        setPizzas(data); 
-      } catch (error) {
-        console.error("Error fetching pizzas:", error);
-      }
-    };
-
-    fetchPizzas();
-  }, []);
-
-  return (
-    <>
-      <Header />
-      <div className="container">
-        <div className="row justify-content-center">
-          {pizzas.length > 0 ? ( // Si hay pizzas, renderizarlas...
-            pizzas.map((pizza) => (
-              <div
-                key={pizza.id}
-                className="col-12 col-md-6 col-lg-4 d-flex justify-content-center mb-4">
-                <CardPizza
-                  {...pizza}
-                />
-              </div>
-            ))
-          ) : (
-            <p>Cargando pizzas...</p>
-          )}
+    return (
+        <div className="container">
+            <div className="row justify-content-center">
+                {pizzas.length > 0 ? (
+                    pizzas.map((pizza) => (
+                        <div
+                            key={pizza.id}
+                            className="col-12 col-md-6 col-lg-4 d-flex justify-content-center mb-4"
+                        >
+                            <CardPizza 
+                                {...pizza} 
+                                addToCart={() => addToCart(pizza)}  // Pasar la función addToCart con los datos de la pizza
+                            />
+                        </div>
+                    ))
+                ) : (
+                    <p className="text-center mt-4">Cargando pizzas...</p>
+                )}
+            </div>
         </div>
-      </div>
-    </>
-  );
+    );
 };
 
 export default Home;
